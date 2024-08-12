@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export default function About() {
     return (
         <div className="about-page-container">
-            <img src={bgImg} className="about-hero-image" alt="The hero image" />
+            <img src={bgImg} className="about-hero-image" alt="Hobbies" />
             <div className="about-page-content">
                 <h1>Why settle for one hobby when you can explore them all?</h1>
                 <p>Our mission is to ignite your passion with the perfect hobby kit. Each kit is carefully curated and recertified before reaching you, ensuring your creative journey begins without any hurdles. (Extra supplies sold separately)</p>
