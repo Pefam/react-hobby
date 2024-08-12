@@ -12,7 +12,7 @@ function App() {
     return (
         <BrowserRouter>
             <header>
-                <Link to="/">#HOBBIES</Link>
+                <Link className="site-logo" to="/">#HOBBIES</Link>
                 <nav>
                     <Link to="/about">About</Link>
                     <Link to="/hobbies">Hobbies</Link>
