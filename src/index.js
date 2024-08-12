@@ -3,6 +3,10 @@ import './index.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
+import Hobbies from "./pages/Hobbies"
+
+import "./server"
+
 function App() {
     return (
         <BrowserRouter>
@@ -10,11 +14,14 @@ function App() {
                 <Link to="/">#HOBBIES</Link>
                 <nav>
                     <Link to="/about">About</Link>
+                    <Link to="/hobbies">Hobbies</Link>
                 </nav>
             </header>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/hobbies" element={<Hobbies />} />
+
             </Routes>
         </BrowserRouter>
     )

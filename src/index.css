@@ -143,3 +143,90 @@ header {
         color: white;
         border-radius: 10px;
     }
+
+
+/*** VAN PAGES ***/
+.hobby-list-container {
+    padding-inline: 23px
+}
+
+.hobby-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 34px;
+    margin-top: 57px;
+}
+
+.hobby-tile a {
+    color: #161616;
+    text-decoration: none;
+}
+
+.hobby-tile img {
+    max-width: 100%;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.hobby-list-container button {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.hobby-type {
+    height: 34px;
+    padding: 6px 26px;
+    font-style: normal;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFEAD0;
+    color: #4D4D4D;
+    transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+    .hobby-type:hover {
+        color: #FFEAD0;
+    }
+
+    .hobby-type:focus {
+        outline: none;
+    }
+
+    .hobby-type.selected {
+        color: #FFEAD0;
+    }
+
+    .hobby-type.creative:hover, .hobby-type.creative.selected {
+        background-color: #E17654;
+    }
+
+    .hobby-type.outdoor:hover, .hobby-type.outdoor.selected {
+        background-color: #115E59;
+    }
+
+    .hobby-type.culinary:hover, .hobby-type.culinary.selected {
+        background-color: #161616;
+    }
+
+    .hobby-type.craft:hover, .hobby-type.craft.selected {
+        background-color: #4B9CD3;
+    }
+
+    .hobby-type.clear-filters {
+        margin-left: -20px;
+        height: 34px;
+        padding: 6px 26px;
+        font-style: normal;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+        text-decoration: underline;
+        background-color: transparent;
+        color: #4D4D4D;
+    }
+
+i[class*='hobby-type-'] {
+    padding: 7px 14px;
+}
