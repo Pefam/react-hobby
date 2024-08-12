@@ -24,7 +24,7 @@ export default function Hobbies() {
 
     return (
         <div className="hobby-list-container">
-            <h1>Explore our van options</h1>
+            <h1>Explore our hobby options</h1>
             <div className="hobby-list">
                 {hobbyElements}
             </div>
