@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 export default function Hobbies() {
     const [hobbies, setHobbies] = React.useState([])
 
@@ -10,12 +11,14 @@ export default function Hobbies() {
 
     const hobbyElements = hobbies.map(hobby => (
         <div key={hobby.id} className="hobby-tile">
-            <img src={hobby.imageUrl} />
-            <div className="hobby-info">
-                <h3>{hobby.name}</h3>
-                <p>${hobby.price}<span>/day</span></p>
-            </div>
-            <i className={`hobby-type ${hobby.type} selected`}>{hobby.type}</i>
+            <Link to={`/hobbies/${hobby.id}`}>
+                <img src={hobby.imageUrl} alt="Hobby activities" />
+                <div className="hobby-info">
+                    <h3>{hobby.name}</h3>
+                    <p>${hobby.price}<span>/day</span></p>
+                </div>
+                <i className={`hobby-type ${hobby.type} selected`}>{hobby.type}</i>
+            </Link>
         </div>
     ))
 
