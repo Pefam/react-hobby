@@ -12,7 +12,7 @@ export default function Hobbies() {
     const hobbyElements = hobbies.map(hobby => (
         <div key={hobby.id} className="hobby-tile">
             <Link to={`/hobbies/${hobby.id}`}>
-                <img src={hobby.imageUrl} alt="Hobby activities" />
+                <img src={hobby.imageUrl} alt={hobby.name} />
                 <div className="hobby-info">
                     <h3>{hobby.name}</h3>
                     <p>${hobby.price}<span>/day</span></p>

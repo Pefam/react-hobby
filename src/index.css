@@ -235,3 +235,55 @@ header {
 i[class*='hobby-type-'] {
     padding: 7px 14px;
 }
+
+.hobby-detail-container {
+    padding: 27px;
+}
+
+    .hobby-detail-container .back-button {
+        color: black;
+        text-decoration: none;
+    }
+
+        .hobby-detail-container .back-button:visited {
+        }
+
+        .hobby-detail-container .back-button span {
+            text-decoration: underline;
+        }
+
+.hobby-detail {
+    display: flex;
+    flex-direction: column;
+    color: #161616;
+}
+
+    .hobby-detail img {
+        border-radius: 5px;
+        margin-block: 47px;
+    }
+
+    .hobby-detail h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .hobby-detail > i {
+        align-self: flex-start;
+    }
+
+    .hobby-detail .hobby-price {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+        .hobby-detail .hobby-price span {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+    .hobby-detail .link-button {
+        background-color: #FF8C38;
+        color: white;
+        font-size: 1.125rem;
+    }
