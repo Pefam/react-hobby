@@ -20,9 +20,11 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/hobbies" element={<Hobbies />} />
                     <Route path="/hobbies/:id" element={<HobbyDetail />} />
-                    <Route path="/teacher" element={<Dashboard />} />
-                    <Route path="/teacher/income" element={<Income />} />
-                    <Route path="/teacher/reviews" element={<Reviews />} />
+
+                    <Route path="/teacher" element={<Dashboard />}>
+                        <Route path="/teacher/income" element={<Income />} />
+                        <Route path="/teacher/reviews" element={<Reviews />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
