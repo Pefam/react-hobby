@@ -9,6 +9,7 @@ import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
 import Layout from "./components/Layout"
+import TeacherLayout from "./components/TeacherLayout"
 import "./server"
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
                     <Route path="/hobbies" element={<Hobbies />} />
                     <Route path="/hobbies/:id" element={<HobbyDetail />} />
 
-                    <Route path="/teacher" element={<Dashboard />}>
+                    <Route path="/teacher" element={<TeacherLayout />}>
+                        <Route path="/teacher" element={<Dashboard />} />
                         <Route path="/teacher/income" element={<Income />} />
                         <Route path="/teacher/reviews" element={<Reviews />} />
                     </Route>
