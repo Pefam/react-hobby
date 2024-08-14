@@ -16,16 +16,16 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/hobbies" element={<Hobbies />} />
-                    <Route path="/hobbies/:id" element={<HobbyDetail />} />
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="hobbies" element={<Hobbies />} />
+                    <Route path="hobbies/:id" element={<HobbyDetail />} />
 
-                    <Route path="/teacher" element={<TeacherLayout />}>
-                        <Route path="/teacher" element={<Dashboard />} />
-                        <Route path="/teacher/income" element={<Income />} />
-                        <Route path="/teacher/reviews" element={<Reviews />} />
+                    <Route path="teacher" element={<TeacherLayout />}>
+                        <Route index element={<Dashboard />} />
+                        <Route path="income" element={<Income />} />
+                        <Route path="reviews" element={<Reviews />} />
                     </Route>
                 </Route>
             </Routes>
