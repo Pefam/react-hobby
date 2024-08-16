@@ -36,7 +36,7 @@ createServer({
         this.get("/teacher/hobbies/:id", (schema, request) => {
             // Hard-code the hostId for now
             const id = request.params.id
-            return schema.hobbies.where({ id, hostId: "123" })
+            return schema.hobbies.findBy({ id, hostId: "123" })
         })
     }
 })
