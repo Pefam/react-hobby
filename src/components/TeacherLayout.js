@@ -11,22 +11,22 @@ export default function TeacherLayout() {
         <>
         <nav className="teacher-nav">
                 <NavLink
-                    to="/teacher"
+                    to="."
                     end
                     style={({isActive}) => isActive ? activeStyles : null}
                 >Dashboard</NavLink>
                 <NavLink
-                    to="/teacher/income"
+                    to="income"
                     style={({ isActive }) => isActive ? activeStyles : null}
                 >Income</NavLink>
                 <NavLink
-                    to="/teacher/hobbies"
+                    to="hobbies"
                     style={({ isActive }) => isActive ? activeStyles : null}
                 >
                     Hobbies
                 </NavLink>
                 <NavLink 
-                to="/teacher/reviews"
+                to="reviews"
                     style={({isActive}) => isActive ? activeStyles : null}
                 >Reviews</NavLink>
         </nav>
