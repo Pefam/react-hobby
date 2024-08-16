@@ -15,10 +15,16 @@ export default function TeacherLayout() {
                     end
                     style={({isActive}) => isActive ? activeStyles : null}
                 >Dashboard</NavLink>
-            <NavLink
+                <NavLink
                     to="/teacher/income"
                     style={({ isActive }) => isActive ? activeStyles : null}
                 >Income</NavLink>
+                <NavLink
+                    to="/teacher/hobbies"
+                    style={({ isActive }) => isActive ? activeStyles : null}
+                >
+                    Hobbies
+                </NavLink>
                 <NavLink 
                 to="/teacher/reviews"
                     style={({isActive}) => isActive ? activeStyles : null}

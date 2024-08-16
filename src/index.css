@@ -333,3 +333,41 @@ i[class*='hobby-type-'] {
             text-decoration: underline;
             font-weight: 600;
         }
+
+.teacher-hobby-link-wrapper {
+    color: unset;
+    text-decoration: unset;
+}
+
+.teacher-hobbies-list {
+    padding-inline: 26px;
+}
+
+.teacher-hobbies-title {
+    padding-inline: 26px;
+}
+
+.teacher-hobby-single {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 15px;
+    padding-block: 18px;
+    padding-left: 24px;
+}
+
+    .teacher-hobby-single > img {
+        height: 70px;
+        border-radius: 5px;
+        margin-right: 17px;
+    }
+
+.teacher-hobby-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-block: 10px;
+}
+
+.teacher-hobby-info p {
+    margin-block: 10px;
+}

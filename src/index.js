@@ -8,6 +8,8 @@ import HobbyDetail from "./pages/Hobbies/HobbyDetail"
 import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
+import TeacherHobbies from "./pages/Teacher/TeacherHobbies"
+import TeacherHobbiesDetail from "./pages/Teacher/TeacherHobbiesDetail"
 import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
 import "./server"
@@ -26,6 +28,8 @@ function App() {
                         <Route index element={<Dashboard />} />
                         <Route path="income" element={<Income />} />
                         <Route path="reviews" element={<Reviews />} />
+                        <Route path="hobbies" element={<TeacherHobbies />} />
+                        <Route path="hobbies/:id" element={<TeacherHobbiesDetail />} />
                     </Route>
                 </Route>
             </Routes>
