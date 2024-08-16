@@ -86,6 +86,18 @@ footer {
     transition: transform .1s ease-in-out;
 }
 
+.back-button {
+    display: block;
+    color: black;
+    text-decoration: none;
+    margin-top: 60px;
+    margin-left: 26px;
+}
+
+    .back-button span:hover {
+        text-decoration: underline;
+    }
+
     .link-button:hover {
         transform: translate(1px, 1px);
     }
@@ -370,4 +382,33 @@ i[class*='hobby-type-'] {
 
 .teacher-hobby-info p {
     margin-block: 10px;
+}
+
+.teacher-hobby-detail-layout-container {
+    background-color: white;
+    padding: 24px;
+    margin: 30px 26px;
+}
+
+.teacher-hobby-detail {
+    display: flex;
+    align-items: center;
+}
+
+    .teacher-hobby-detail > img {
+        height: 160px;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+.teacher-hobby-detail-info-text > h3 {
+    margin-top: 24px;
+    margin-bottom: 5px;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.teacher-hobby-detail-info-text > h4 {
+    font-size: 20px;
+    margin-block: 0;
 }
