@@ -9,6 +9,11 @@ html, body {
     font-family: "Inter", sans-serif;
 }
 
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
     body::-webkit-scrollbar {
         display: none;
     }
@@ -29,7 +34,6 @@ header {
     display: flex;
     align-items: center;
     padding-block: 10px;
-    border-radius: 5px;
 }
 
     header .site-logo {
@@ -39,12 +43,6 @@ header {
         font-weight: 900;
         font-size: 25px;
     }
-
-a.active-link {
-    font-weight: bold;
-    text-decoration: underline;
-    color: #161616;
-}
 
     header a {
         text-decoration: none;
@@ -194,6 +192,15 @@ footer {
 /*** Hobby PAGES ***/
 .hobby-list-container {
     padding-inline: 23px
+}
+
+.hobby-list-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hobby-list-filter-buttons > a {
+    margin-right: 15px;
 }
 
 .hobby-list {

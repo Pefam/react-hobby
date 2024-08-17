@@ -32,9 +32,40 @@ export default function Hobbies() {
         </div>
     ))
 
+
+
+
+
+
+
     return (
         <div className="hobby-list-container">
             <h1>Explore our hobby options</h1>
+
+            <div className="hobby-list-filter-buttons">
+                <Link
+                    to="?type=creative"
+                    className="hobby-type creative">
+                    Creative
+                </Link>
+                <Link
+                    to="?type=outdoor"
+                    className="hobby-type outdoor">
+                    Outdoor
+                </Link>
+                <Link
+                    to="?type=culinary"
+                    className="hobby-type culinary">
+                    Culinary
+                </Link>
+                <Link
+                    to="."
+                    className="hobby-type clear-filters">
+                    Clear filter
+                </Link>
+
+            </div>
+
             <div className="hobby-list">
                 {hobbyElements}
             </div>
