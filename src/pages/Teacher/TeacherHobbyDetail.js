@@ -67,7 +67,7 @@ export default function TeacherHobbyDetail() {
 
                 </nav>
 
-                <Outlet />
+                <Outlet context={{ currentHobby }} />
             </div>
         </section>
     )
