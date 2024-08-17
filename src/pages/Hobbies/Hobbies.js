@@ -1,7 +1,13 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
+
 export default function Hobbies() {
+    const [searchParams, setSearchParams] = useSearchParams()
     const [hobbies, setHobbies] = React.useState([])
+
+
+    const typeFilter = searchParams.get("type")
+    console.log(typeFilter)
 
     React.useEffect(() => {
         fetch("/api/hobbies")
@@ -9,7 +15,11 @@ export default function Hobbies() {
             .then(data => setHobbies(data.hobbies))
     }, [])
 
-    const hobbyElements = hobbies.map(hobby => (
+    const displayedHobbies = typeFilter
+        ? hobbies.filter(hobby => hobby.type === typeFilter)
+        : hobbies
+
+    const hobbyElements = displayedHobbies.map(hobby => (
         <div key={hobby.id} className="hobby-tile">
             <Link to={`/hobbies/${hobby.id}`}>
                 <img src={hobby.imageUrl} alt={hobby.name} />
