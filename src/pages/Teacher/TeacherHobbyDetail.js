@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, Outlet } from "react-router-dom"
 export default function TeacherHobbyDetail() {
     const { id } = useParams()
     const [currentHobby, setCurrentHobby] = React.useState(null)
@@ -35,6 +35,7 @@ export default function TeacherHobbyDetail() {
                         <h4>${currentHobby.price}/day</h4>
                     </div>
                 </div>
+                <Outlet />
             </div>
         </section>
     )

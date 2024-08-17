@@ -10,6 +10,9 @@ import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
 import TeacherHobbies from "./pages/Teacher/TeacherHobbies"
 import TeacherHobbyDetail from "./pages/Teacher/TeacherHobbyDetail"
+import TeacherHobbyInfo from "./pages/Teacher/TeacherHobbyInfo"
+import TeacherHobbyPricing from "./pages/Teacher/TeacherHobbyPricing"
+import TeacherHobbyPhotos from "./pages/Teacher/TeacherHobbyPhotos"
 import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
 import "./server"
@@ -29,7 +32,11 @@ function App() {
                         <Route path="income" element={<Income />} />
                         <Route path="reviews" element={<Reviews />} />
                         <Route path="hobbies" element={<TeacherHobbies />} />
-                        <Route path="hobbies/:id" element={<TeacherHobbyDetail />} />
+                        <Route path="hobbies/:id" element={<TeacherHobbyDetail />}>
+                            <Route index element={<TeacherHobbyInfo />} />
+                            <Route path="pricing" element={<TeacherHobbyPricing />} />
+                            <Route path="photos" element={<TeacherHobbyPhotos />} />
+                        </Route>
                     </Route>
                 </Route>
             </Routes>
