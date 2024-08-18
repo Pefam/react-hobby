@@ -32,11 +32,16 @@ export default function Hobbies() {
         </div>
     ))
 
-
-
-
-
-
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+            if (value === null) {
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
 
     return (
         <div className="hobby-list-container">
@@ -45,25 +50,34 @@ export default function Hobbies() {
             <div className="hobby-list-filter-buttons">
 
                 <button
-                    onClick={() => setSearchParams({ type: "creative" })}
-                    className="hobby-type creative">
+                    onClick={() => handleFilterChange("type", "creative")}
+                    className={
+                        `hobby-type creative ${typeFilter === "creative" ? "selected" : ""}`
+                    }>
                     Creative
                 </button>
                 <button
-                    onClick={() => setSearchParams({ type: "outdoor" })}
-                    className="hobby-type outdoor">
+                    onClick={() => handleFilterChange("type", "outdoor")}
+                    className={
+                        `hobby-type outdoor ${typeFilter === "outdoor" ? "selected" : ""}`
+                        }>
                     Outdoor
                 </button>
                 <button
-                    onClick={() => setSearchParams({ type: "culinary" })}
-                    className="hobby-type culinary">
+                    onClick={() => handleFilterChange("type", "culinary")}
+                    className={
+                        `hobby-type culinary ${typeFilter === "culinary" ? "selected" : ""}`
+                        }>
                     Culinary
                 </button>
-                <button
+
+                { typeFilter ? (
+                    <button
                     onClick={() => setSearchParams({})}
                     className="hobby-type clear-filters">
                     Clear filter
-                </button>
+                        </button>
+                    ) : null}
 
             </div>
 
