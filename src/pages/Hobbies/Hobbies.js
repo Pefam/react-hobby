@@ -43,26 +43,27 @@ export default function Hobbies() {
             <h1>Explore our hobby options</h1>
 
             <div className="hobby-list-filter-buttons">
-                <Link
-                    to="?type=creative"
+
+                <button
+                    onClick={() => setSearchParams({ type: "creative" })}
                     className="hobby-type creative">
                     Creative
-                </Link>
-                <Link
-                    to="?type=outdoor"
+                </button>
+                <button
+                    onClick={() => setSearchParams({ type: "outdoor" })}
                     className="hobby-type outdoor">
                     Outdoor
-                </Link>
-                <Link
-                    to="?type=culinary"
+                </button>
+                <button
+                    onClick={() => setSearchParams({ type: "culinary" })}
                     className="hobby-type culinary">
                     Culinary
-                </Link>
-                <Link
-                    to="."
+                </button>
+                <button
+                    onClick={() => setSearchParams({})}
                     className="hobby-type clear-filters">
                     Clear filter
-                </Link>
+                </button>
 
             </div>
 
