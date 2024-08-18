@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export default function HobbyDetail() {
     const params = useParams()
@@ -12,6 +12,11 @@ export default function HobbyDetail() {
 
     return (
         <div className="hobby-detail-container">
+            <Link
+                to=".."
+                relative="path"
+                className="back-button"
+            >&larr; <span>Back to all hobbies</span></Link>
             {hobby ? (
                 <div className="hobby-detail">
                     <img src={hobby.imageUrl} alt={hobby.name} />
