@@ -12,7 +12,7 @@ export default function TeacherHobbies() {
 
     const teacherHobbiesEls = hobbies.map(hobby => (
         <Link
-            to={`/teacher/hobbies/${hobby.id}`}
+            to={hobby.id}
             key={hobby.id}
             className="teacher-hobby-link-wrapper"
         >
