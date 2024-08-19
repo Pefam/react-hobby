@@ -21,7 +21,7 @@ export default function Hobbies() {
 
     const hobbyElements = displayedHobbies.map(hobby => (
         <div key={hobby.id} className="hobby-tile">
-            <Link to={hobby.id}>
+            <Link to={hobby.id} state={{ search: searchParams.toString() }}>
                 <img src={hobby.imageUrl} alt={hobby.name} />
                 <div className="hobby-info">
                     <h3>{hobby.name}</h3>
