@@ -6,17 +6,22 @@ export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [hobbies, setHobbies] = React.useState([])
     const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
 
 
     const typeFilter = searchParams.get("type")
-    console.log(typeFilter)
 
     React.useEffect(() => {
         async function loadHobbies() {
             setLoading(true)
-            const data = await getHobbies()
-            setHobbies(data)
-            setLoading(false)
+            try {
+                const data = await getHobbies()
+                setHobbies(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
         }
 
         loadHobbies()
@@ -55,6 +60,10 @@ export default function Hobbies() {
 
     if (loading) {
         return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
     }
 
     return (

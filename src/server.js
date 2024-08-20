@@ -1,4 +1,4 @@
-import { createServer, Model } from "miragejs"
+import { createServer, Model, Response } from "miragejs"
 
 createServer({
     models: {
@@ -21,7 +21,8 @@ createServer({
         this.timing = 1000
 
         this.get("/hobbies", (schema, request) => {
-            return schema.hobbies.all()
+            return new Response(400, {}, { error: "Error fetching data" })
+            // return schema.hobbies.all()
         })
 
         this.get("/hobbies/:id", (schema, request) => {
