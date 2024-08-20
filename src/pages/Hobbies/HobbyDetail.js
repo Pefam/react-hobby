@@ -12,6 +12,7 @@ export default function HobbyDetail() {
     }, [params.id])
 
     const search = location.state?.search || ""
+    const type = location.state?.type || "all"
 
     return (
         <div className="hobby-detail-container">
@@ -19,7 +20,7 @@ export default function HobbyDetail() {
                 to={`..${search}`}
                 relative="path"
                 className="back-button"
-            >&larr; <span>Back to all hobbies</span></Link>
+            >&larr; <span>Back to {type} hobbies</span></Link>
             {hobby ? (
                 <div className="hobby-detail">
                     <img src={hobby.imageUrl} alt={hobby.name} />
