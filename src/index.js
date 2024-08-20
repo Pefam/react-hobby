@@ -3,6 +3,7 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
+import NotFound from "./pages/NotFound"
 import Hobbies from "./pages/Hobbies/Hobbies"
 import HobbyDetail from "./pages/Hobbies/HobbyDetail"
 import Dashboard from "./pages/Teacher/Dashboard"
@@ -22,6 +23,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
+                    
                     <Route index element={<Home />} />
                     <Route path="about" element={<About />} />
                     <Route path="hobbies" element={<Hobbies />} />
@@ -38,6 +40,7 @@ function App() {
                             <Route path="photos" element={<TeacherHobbyPhotos />} />
                         </Route>
                     </Route>
+                    <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>
