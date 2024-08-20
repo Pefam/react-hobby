@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useSearchParams } from "react-router-dom"
+import { getHobbies } from "../../api"
 
 export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -10,9 +11,12 @@ export default function Hobbies() {
     console.log(typeFilter)
 
     React.useEffect(() => {
-        fetch("/api/hobbies")
-            .then(res => res.json())
-            .then(data => setHobbies(data.hobbies))
+        async function loadHobbies() {
+            const data = await getHobbies()
+            setHobbies(data)
+        }
+
+        loadHobbies()
     }, [])
 
     const displayedHobbies = typeFilter
