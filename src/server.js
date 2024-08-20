@@ -18,6 +18,7 @@ createServer({
     routes() {
         this.namespace = "api"
         this.logging = false
+        this.timing = 1000
 
         this.get("/hobbies", (schema, request) => {
             return schema.hobbies.all()

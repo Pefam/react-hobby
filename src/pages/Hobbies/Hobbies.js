@@ -5,6 +5,7 @@ import { getHobbies } from "../../api"
 export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [hobbies, setHobbies] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
 
 
     const typeFilter = searchParams.get("type")
@@ -12,8 +13,10 @@ export default function Hobbies() {
 
     React.useEffect(() => {
         async function loadHobbies() {
+            setLoading(true)
             const data = await getHobbies()
             setHobbies(data)
+            setLoading(false)
         }
 
         loadHobbies()
@@ -48,6 +51,10 @@ export default function Hobbies() {
             }
             return prevParams
         })
+    }
+
+    if (loading) {
+        return <h1>Loading...</h1>
     }
 
     return (
