@@ -1,8 +1,9 @@
 import React from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useLocation } from "react-router-dom"
 
 export default function HobbyDetail() {
     const params = useParams()
+    const location = useLocation()
     const [hobby, setHobby] = React.useState(null)
     React.useEffect(() => {
         fetch(`/api/hobbies/${params.id}`)
@@ -10,10 +11,12 @@ export default function HobbyDetail() {
             .then(data => setHobby(data.hobbies))
     }, [params.id])
 
+    const search = location.state?.search || ""
+
     return (
         <div className="hobby-detail-container">
             <Link
-                to=".."
+                to={`..${search}`}
                 relative="path"
                 className="back-button"
             >&larr; <span>Back to all hobbies</span></Link>
