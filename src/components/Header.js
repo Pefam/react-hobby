@@ -1,6 +1,13 @@
+import Avatar from "../assets/images/avatar-icon.png"
 import { Link, NavLink } from "react-router-dom"
 
 export default function Header() {
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
+    }
+
     return (
         <header>
             <Link className="site-logo" to="/">#HOBBIES</Link>
@@ -16,7 +23,16 @@ export default function Header() {
                 <NavLink
                     to="/hobbies"
                     className={({isActive}) => isActive ? "active-link" : null}
-                    >Hobbies</NavLink>
+                    >Hobbies
+                </NavLink>
+                <Link to="login" className="login-link">
+                    <img
+                        src={Avatar}
+                        className="login-icon"
+                        alt="Avatar"
+                    />
+                </Link>
+
             </nav>
         </header>
     )

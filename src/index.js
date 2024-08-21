@@ -6,6 +6,7 @@ import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import Hobbies from "./pages/Hobbies/Hobbies"
 import HobbyDetail from "./pages/Hobbies/HobbyDetail"
+import Login from "./pages/Login"
 import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
@@ -16,6 +17,7 @@ import TeacherHobbyPricing from "./pages/Teacher/TeacherHobbyPricing"
 import TeacherHobbyPhotos from "./pages/Teacher/TeacherHobbyPhotos"
 import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
+import AuthRequired from "./components/AuthRequired"
 import "./server"
 
 function App() {
@@ -28,7 +30,15 @@ function App() {
                     <Route path="about" element={<About />} />
                     <Route path="hobbies" element={<Hobbies />} />
                     <Route path="hobbies/:id" element={<HobbyDetail />} />
+                    <Route
+                        path="login"
+                        element={<Login />}
+                    />
 
+
+
+
+                    <Route element={<AuthRequired />}>
                     <Route path="teacher" element={<TeacherLayout />}>
                         <Route index element={<Dashboard />} />
                         <Route path="income" element={<Income />} />
@@ -40,6 +50,9 @@ function App() {
                             <Route path="photos" element={<TeacherHobbyPhotos />} />
                         </Route>
                     </Route>
+                    </Route>
+
+
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
