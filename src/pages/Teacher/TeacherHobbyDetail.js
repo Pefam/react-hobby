@@ -1,23 +1,40 @@
 import React from "react"
 import { useParams, Link, NavLink, Outlet } from "react-router-dom"
+import { getTeacherHobbies } from "../../api"
 export default function TeacherHobbyDetail() {
-    const { id } = useParams()
     const [currentHobby, setCurrentHobby] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
+    const { id } = useParams()
+
+    React.useEffect(() => {
+        async function loadHobbies() {
+            setLoading(true)
+            try {
+                const data = await getTeacherHobbies(id)
+                setCurrentHobby(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadHobbies()
+    }, [id])
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
+    }
 
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
-    }
-
-    React.useEffect(() => {
-        fetch(`/api/teacher/hobbies/${id}`)
-            .then(res => res.json())
-            .then(data => setCurrentHobby(data.hobbies))
-    })
-
-    if (!currentHobby) {
-        return <h1>Loading...</h1>
     }
 
     return (

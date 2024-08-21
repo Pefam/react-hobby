@@ -1,13 +1,25 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { getTeacherHobbies } from "../../api"
 
 export default function TeacherHobbies() {
-    const [hobbies, setHobbies] = React.useState([])
+    const [hobbies, setHobbies] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
 
     React.useEffect(() => {
-        fetch("/api/teacher/hobbies")
-            .then(res => res.json())
-            .then(data => setHobbies(data.hobbies))
+        async function loadHobbies() {
+            setLoading(true)
+            try {
+                const data = await getTeacherHobbies()
+                setHobbies(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadHobbies()
     }, [])
 
     const teacherHobbiesEls = hobbies.map(hobby => (
@@ -25,6 +37,14 @@ export default function TeacherHobbies() {
             </div>
         </Link>
     ))
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
+    }
 
     return (
         <section>

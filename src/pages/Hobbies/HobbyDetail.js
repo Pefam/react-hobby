@@ -1,15 +1,36 @@
 import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
-
+import { getHobbies } from "../../api"
+//params = id
 export default function HobbyDetail() {
-    const params = useParams()
-    const location = useLocation()
     const [hobby, setHobby] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
+    const { id } = useParams()
+    const location = useLocation()
+
     React.useEffect(() => {
-        fetch(`/api/hobbies/${params.id}`)
-            .then(res => res.json())
-            .then(data => setHobby(data.hobbies))
-    }, [params.id])
+        async function loadHobbies() {
+            setLoading(true)
+            try {
+                const data = await getHobbies(id)
+                setHobby(data)
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadHobbies()
+    }, [id])
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
+
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
+    }
 
     const search = location.state?.search || ""
     const type = location.state?.type || "all"

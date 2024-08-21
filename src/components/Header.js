@@ -2,11 +2,6 @@ import Avatar from "../assets/images/avatar-icon.png"
 import { Link, NavLink } from "react-router-dom"
 
 export default function Header() {
-    const activeStyles = {
-        fontWeight: "bold",
-        textDecoration: "underline",
-        color: "#161616"
-    }
 
     return (
         <header>

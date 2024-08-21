@@ -3,6 +3,7 @@ import { createServer, Model, Response } from "miragejs"
 createServer({
     models: {
         hobbies: Model,
+        users: Model
     },
 
     seeds(server) {
@@ -13,6 +14,7 @@ createServer({
         server.create("hobby", { id: "4", name: "Painting", price: 65, description: "Painting allows you to express your creativity on canvas. This kit comes with all the paints, brushes, and canvases you need to get started.", imageUrl: "https://raw.githubusercontent.com/Pefam/react-hobby/main/src/assets/images/painting.png", type: "creative", hostId: "789" })
         server.create("hobby", { id: "5", name: "Hiking", price: 120, description: "Hiking is a great way to explore the outdoors and stay fit. This kit includes a durable backpack, water bottle, and all the gear you need for a safe and enjoyable hike.", imageUrl: "https://raw.githubusercontent.com/Pefam/react-hobby/main/src/assets/images/hiking.png", type: "outdoor", hostId: "789" })
         server.create("hobby", { id: "6", name: "Woodworking", price: 70, description: "Woodworking is a rewarding hobby that lets you create beautiful pieces with your own hands. This kit includes the tools and materials needed to get started on your first project.", imageUrl: "https://raw.githubusercontent.com/Pefam/react-hobby/main/src/assets/images/woodworking.png", type: "craft", hostId: "123" })
+        server.create("user", { id: "123", email: "b@b.com", password: "p123", name: "Bob" })
     },
 
     routes() {
@@ -39,6 +41,22 @@ createServer({
             // Hard-code the hostId for now
             const id = request.params.id
             return schema.hobbies.findBy({ id, hostId: "123" })
+        })
+
+        this.post("/login", (schema, request) => {
+            const { email, password } = JSON.parse(request.requestBody)
+            //For testing
+            const foundUser = schema.users.findBy({ email, password })
+            if (!foundUser) {
+                return new Response(401, {}, { message: "No user with those credentials found!" })
+            }
+
+            //Testing
+            foundUser.password = undefined
+            return {
+                user: foundUser,
+                token: "Enjoy your pizza, here's your tokens."
+            }
         })
     }
 })
