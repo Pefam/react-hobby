@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import { getTeacherHobbies } from "../../api"
 
 export default function TeacherHobbies() {
-    const [hobbies, setHobbies] = React.useState(null)
+    console.log('teacher hobbies')
+    const [hobbies, setHobbies] = React.useState([])
     const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
 
