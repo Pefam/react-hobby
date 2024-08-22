@@ -536,3 +536,213 @@ i[class*='hobby-type-'] {
 .login-error {
     color: red;
 }
+
+
+
+
+
+
+.teacher-dashboard-earnings {
+    background-color: #ffead0;
+    padding: 37px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .teacher-dashboard-earnings > .info > h1 {
+        font-size: 36px;
+        color: #161616;
+        margin: 0;
+    }
+
+    .teacher-dashboard-earnings > .info > p {
+        color: #4d4d4d;
+    }
+
+        .teacher-dashboard-earnings > .info > p > span {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+    .teacher-dashboard-earnings > .info > h2 {
+        margin: 0;
+        font-size: 38px;
+        color: #161616;
+        font-weight: 900;
+    }
+
+.teacher-dashboard-reviews {
+    background-color: #ffddb2;
+    padding: 25px 26px;
+    display: flex;
+    align-items: center;
+}
+
+    .teacher-dashboard-reviews > h2 {
+        margin: 0;
+    }
+
+    .teacher-dashboard-reviews .star {
+        color: #ff8c38;
+        margin-left: 15px;
+        font-size: 25px;
+    }
+
+    .teacher-dashboard-reviews p {
+        margin-left: 5px;
+        font-size: 20px;
+        color: #4d4d4d;
+        margin-right: auto;
+    }
+
+        .teacher-dashboard-reviews p > span {
+            font-weight: bold;
+            color: #161616;
+        }
+
+.teacher-dashboard-hobbies {
+    padding: 38px 26px;
+}
+
+    .teacher-dashboard-hobbies > .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .teacher-dashboard-hobbies .host-vans-list {
+        padding-inline: 0;
+    }
+
+
+
+
+
+
+.teacher-income {
+    padding-inline: 26px;
+    color: #161616;
+}
+
+    .teacher-income > p {
+        color: #4d4d4d;
+    }
+
+        .teacher-income > p span {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+    .teacher-income > h2 {
+        font-size: 38px;
+        color: #161616;
+        font-weight: 900;
+    }
+
+img.graph {
+    width: 100%;
+    max-width: 500px;
+}
+
+.teacher-income .info-header > p {
+    color: #4d4d4d;
+}
+
+    .teacher-income .info-header > p span {
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+.teacher-income .info-header > h3 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-top: 60px;
+}
+
+.teacher-income .transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 31px;
+    padding: 35px 29px;
+    border-radius: 6px;
+}
+
+    .teacher-income .transaction > h3 {
+        font-size: 36px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .teacher-income .transaction > p {
+        font-weight: 500;
+        font-size: 20px;
+        color: #4d4d4d;
+    }
+
+
+
+
+
+.teacher-reviews {
+    padding-inline: 26px;
+    color: #161616;
+}
+
+    .teacher-reviews .top-text {
+        display: flex;
+        align-items: center;
+        margin-bottom: 32px;
+    }
+
+        .teacher-reviews .top-text > h2 {
+            font-weight: 700;
+            font-size: 32px;
+            margin: 0;
+            margin-right: 20px;
+        }
+
+        .teacher-reviews .top-text > p {
+            margin: 0;
+            color: #4d4d4d;
+        }
+
+            .teacher-reviews .top-text > p span {
+                text-decoration: underline;
+                font-weight: bold;
+            }
+
+    .teacher-reviews > img {
+        margin-bottom: 36px;
+    }
+
+    .teacher-reviews .review {
+        margin-block: 25px;
+    }
+
+        .teacher-reviews .review .info {
+            display: flex;
+        }
+
+        .teacher-reviews .review .name {
+            color: #161616;
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .teacher-reviews .review .date {
+            color: #8c8c8c;
+        }
+
+    .teacher-reviews hr {
+        background-color: #c7c7c7;
+        height: 1px;
+        border: 0;
+    }
+
+    .teacher-reviews .review-star {
+        color: #ff8c38;
+        margin-right: 5px;
+    }
