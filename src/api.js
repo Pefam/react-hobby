@@ -1,7 +1,31 @@
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(() => resolve(), ms))
+
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from "firebase/firestore/lite"
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB-2GLUO8XrNnsi3sxW3LQGqL3dvrbuv1M",
+    authDomain: "hobbylife-7170e.firebaseapp.com",
+    projectId: "hobbylife-7170e",
+    storageBucket: "hobbylife-7170e.appspot.com",
+    messagingSenderId: "497025191196",
+    appId: "1:497025191196:web:7fffad375a1dc1e8057ed9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app)
+const hobbiesCollectionRef = collection(db, "hobbies")
+
+export async function getHobbies() {
+    const snapshot = await getDocs(hobbiesCollectionRef)
+    const hobbies = snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return hobbies
 }
 
+/*
 export async function getHobbies(id) {
     const url = id ? `/api/hobbies/${id}` : "/api/hobbies"
     const res = await fetch(url)
@@ -14,7 +38,7 @@ export async function getHobbies(id) {
     }
     const data = await res.json()
     return data.hobbies
-}
+}*/
 
 export async function getTeacherHobbies(id) {
     const url = id ? `/api/teacher/hobbies/${id}` : "/api/teacher/hobbies"

@@ -20,6 +20,7 @@ createServer({
     routes() {
         this.namespace = "api"
         this.logging = false
+        this.passthrough("https://firestore.googleapis.com/**")
         //this.timing = 1000
 
         this.get("/hobbies", (schema, request) => {
