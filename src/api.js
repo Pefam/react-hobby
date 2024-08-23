@@ -5,7 +5,9 @@ import {
     collection,
     getDocs,
     doc,
-    getDoc
+    getDoc,
+    query,
+    where
 } from "firebase/firestore/lite"
 
 
@@ -40,6 +42,17 @@ export async function getHobby(id) {
     }
 }
 
+export async function getTeacherHobbies() {
+    const q = query(hobbiesCollectionRef, where("hostId", "==", "123"))
+    const snapshot = await getDocs(q)
+    const hobbies = snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return hobbies
+}
+
+/*
 export async function getTeacherHobbies(id) {
     const url = id ? `/api/teacher/hobbies/${id}` : "/api/teacher/hobbies"
     const res = await fetch(url)
@@ -53,6 +66,7 @@ export async function getTeacherHobbies(id) {
     const data = await res.json()
     return data.hobbies
 }
+*/
 
 export async function loginUser(creds) {
     const res = await fetch("/api/login",
