@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
-import { getHobbies } from "../../api"
+import { getHobby } from "../../api"
 //params = id
 export default function HobbyDetail() {
     const [hobby, setHobby] = React.useState(null)
@@ -13,7 +13,7 @@ export default function HobbyDetail() {
         async function loadHobbies() {
             setLoading(true)
             try {
-                const data = await getHobbies(id)
+                const data = await getHobby(id)
                 setHobby(data)
             } catch (err) {
                 setError(err)

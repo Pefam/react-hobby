@@ -1,6 +1,12 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite"
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    getDoc
+} from "firebase/firestore/lite"
 
 
 const firebaseConfig = {
@@ -25,20 +31,14 @@ export async function getHobbies() {
     return hobbies
 }
 
-/*
-export async function getHobbies(id) {
-    const url = id ? `/api/hobbies/${id}` : "/api/hobbies"
-    const res = await fetch(url)
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch hobbies",
-            statusText: res.statusText,
-            status: res.status
-        }
+export async function getHobby(id) {
+    const docRef = doc(db, "hobbies", id)
+    const snapshot = await getDoc(docRef)
+    return {
+        ...snapshot.data(),
+        id: snapshot.id
     }
-    const data = await res.json()
-    return data.hobbies
-}*/
+}
 
 export async function getTeacherHobbies(id) {
     const url = id ? `/api/teacher/hobbies/${id}` : "/api/teacher/hobbies"
