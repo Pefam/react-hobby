@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams, Link, NavLink, Outlet } from "react-router-dom"
-import { getTeacherHobbies } from "../../api"
+import { getHobby } from "../../api"
 export default function TeacherHobbyDetail() {
     const [currentHobby, setCurrentHobby] = React.useState([])
     const [loading, setLoading] = React.useState(false)
@@ -11,7 +11,7 @@ export default function TeacherHobbyDetail() {
         async function loadHobbies() {
             setLoading(true)
             try {
-                const data = await getTeacherHobbies(id)
+                const data = await getHobby(id)
                 setCurrentHobby(data)
             } catch (err) {
                 setError(err)
