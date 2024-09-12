@@ -7,31 +7,13 @@ export function loader() {
 }
 export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [hobbies, setHobbies] = React.useState([])
-    const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
 
 
-    const data = useLoaderData()
-    console.log(data)
+    const hobbies = useLoaderData()
 
     const typeFilter = searchParams.get("type")
 
-    React.useEffect(() => {
-        async function loadHobbies() {
-            setLoading(true)
-            try {
-                const data = await getHobbies()
-                setHobbies(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        loadHobbies()
-    }, [])
 
     const displayedHobbies = typeFilter
         ? hobbies.filter(hobby => hobby.type === typeFilter)
@@ -62,10 +44,6 @@ export default function Hobbies() {
             }
             return prevParams
         })
-    }
-
-    if (loading) {
-        return <h1>Loading...</h1>
     }
 
     if (error) {
