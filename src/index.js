@@ -1,6 +1,12 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import {
+    RouterProvider,
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    Link
+} from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
@@ -20,43 +26,44 @@ import TeacherLayout from "./components/TeacherLayout"
 import AuthRequired from "./components/AuthRequired"
 import "./server"
 
+const router = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="hobbies" element={<Hobbies />} />
+        <Route path="hobbies/:id" element={<HobbyDetail />} />
+        <Route
+            path="login"
+            element={<Login />}
+        />
+
+
+
+
+        <Route element={<AuthRequired />}>
+            <Route path="teacher" element={<TeacherLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="income" element={<Income />} />
+                <Route path="reviews" element={<Reviews />} />
+                <Route path="hobbies" element={<TeacherHobbies />} />
+                <Route path="hobbies/:id" element={<TeacherHobbyDetail />}>
+                    <Route index element={<TeacherHobbyInfo />} />
+                    <Route path="pricing" element={<TeacherHobbyPricing />} />
+                    <Route path="photos" element={<TeacherHobbyPhotos />} />
+                </Route>
+            </Route>
+        </Route>
+
+
+        <Route path="*" element={<NotFound />} />
+    </Route>
+))
+
+
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="hobbies" element={<Hobbies />} />
-                    <Route path="hobbies/:id" element={<HobbyDetail />} />
-                    <Route
-                        path="login"
-                        element={<Login />}
-                    />
-
-
-
-
-                    <Route element={<AuthRequired />}>
-                    <Route path="teacher" element={<TeacherLayout />}>
-                        <Route index element={<Dashboard />} />
-                        <Route path="income" element={<Income />} />
-                        <Route path="reviews" element={<Reviews />} />
-                        <Route path="hobbies" element={<TeacherHobbies />} />
-                        <Route path="hobbies/:id" element={<TeacherHobbyDetail />}>
-                            <Route index element={<TeacherHobbyInfo />} />
-                            <Route path="pricing" element={<TeacherHobbyPricing />} />
-                            <Route path="photos" element={<TeacherHobbyPhotos />} />
-                        </Route>
-                    </Route>
-                    </Route>
-
-
-                    <Route path="*" element={<NotFound />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <RouterProvider router={router} />
     )
 }
 
