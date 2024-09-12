@@ -1,13 +1,19 @@
 import React from "react"
-import { Link, useSearchParams } from "react-router-dom"
+import { Link, useSearchParams, useLoaderData } from "react-router-dom"
 import { getHobbies } from "../../api"
 
+export function loader() {
+    return getHobbies()
+}
 export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [hobbies, setHobbies] = React.useState([])
     const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
 
+
+    const data = useLoaderData()
+    console.log(data)
 
     const typeFilter = searchParams.get("type")
 

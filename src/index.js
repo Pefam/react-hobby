@@ -5,12 +5,11 @@ import {
     createBrowserRouter,
     createRoutesFromElements,
     Route,
-    Link
 } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
-import Hobbies from "./pages/Hobbies/Hobbies"
+import Hobbies, { loader as hobbiesLoader } from "./pages/Hobbies/Hobbies"
 import HobbyDetail from "./pages/Hobbies/HobbyDetail"
 import Login from "./pages/Login"
 import Dashboard from "./pages/Teacher/Dashboard"
@@ -31,7 +30,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="hobbies" element={<Hobbies />} />
+        <Route path="hobbies" element={<Hobbies />} loader={hobbiesLoader} />
         <Route path="hobbies/:id" element={<HobbyDetail />} />
         <Route
             path="login"
