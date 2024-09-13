@@ -24,8 +24,9 @@ createServer({
         //this.timing = 1000
 
         this.get("/hobbies", (schema, request) => {
-            //return new Response(400, {}, { error: "Error fetching data" })
-            return schema.hobbies.all()
+            return new Response(400, {}, { error: "Error fetching data" })
+            console.log("hello")
+            //return schema.hobbies.all()
         })
 
         this.get("/hobbies/:id", (schema, request) => {

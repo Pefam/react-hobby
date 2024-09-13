@@ -25,13 +25,30 @@ const db = getFirestore(app)
 const hobbiesCollectionRef = collection(db, "hobbies")
 
 export async function getHobbies() {
-    const snapshot = await getDocs(hobbiesCollectionRef)
-    const hobbies = snapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-    }))
-    return hobbies
+    try {
+        // Simulate an error to test the catch block
+        // Comment out the line below to restore normal functionality
+        throw new Error("Simulated error fetching data");
+
+        // Original code
+        /*
+        const snapshot = await getDocs(hobbiesCollectionRef)
+        const hobbies = snapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }))
+        return hobbies
+        */
+    } catch (error) {
+        throw {
+            message: "Failed to fetch hobbies",
+            statusText: error.message,
+            status: error.code || error.name || "Unknown Error"
+        }
+    }
 }
+
+
 
 export async function getHobby(id) {
     const docRef = doc(db, "hobbies", id)

@@ -23,6 +23,7 @@ import TeacherHobbyPhotos from "./pages/Teacher/TeacherHobbyPhotos"
 import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
 import AuthRequired from "./components/AuthRequired"
+import Error from "./components/Error"
 import "./server"
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -30,7 +31,12 @@ const router = createBrowserRouter(createRoutesFromElements(
 
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="hobbies" element={<Hobbies />} loader={hobbiesLoader} />
+        <Route
+            path="hobbies"
+            element={<Hobbies />}
+            errorElement={<Error />}
+            loader={hobbiesLoader}
+        />
         <Route path="hobbies/:id" element={<HobbyDetail />} />
         <Route
             path="login"
