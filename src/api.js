@@ -24,29 +24,28 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 const hobbiesCollectionRef = collection(db, "hobbies")
 
+
+
 export async function getHobbies() {
     try {
-        // Simulate an error to test the catch block
-        // Comment out the line below to restore normal functionality
-        throw new Error("Simulated error fetching data");
-
-        // Original code
-        /*
+        //throw new Error("Simulated error fetching data");
         const snapshot = await getDocs(hobbiesCollectionRef)
         const hobbies = snapshot.docs.map(doc => ({
             ...doc.data(),
             id: doc.id
         }))
         return hobbies
-        */
+
     } catch (error) {
-        throw {
-            message: "Failed to fetch hobbies",
-            statusText: error.message,
-            status: error.code || error.name || "Unknown Error"
-        }
+        // Create a new Error object and attach additional properties
+        const customError = new Error("Failed to fetch hobbies")
+        customError.statusText = error.message
+        customError.status = error.code || error.name || "Unknown Error"
+
+        throw customError // Throwing an Error object complies with ESLint
     }
 }
+
 
 
 

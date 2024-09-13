@@ -1,5 +1,5 @@
-import ReactDOM from 'react-dom/client';
 import './index.css';
+import ReactDOM from 'react-dom/client';
 import {
     RouterProvider,
     createBrowserRouter,
@@ -24,7 +24,7 @@ import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
 import AuthRequired from "./components/AuthRequired"
 import Error from "./components/Error"
-import "./server"
+//import "./server"
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" element={<Layout />}>

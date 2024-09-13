@@ -7,7 +7,7 @@ export function loader() {
 }
 export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [error, setError] = React.useState(null)
+    //const [error, setError] = React.useState(null)
 
 
     const hobbies = useLoaderData()
@@ -46,9 +46,11 @@ export default function Hobbies() {
         })
     }
 
+    /*
     if (error) {
         return <h1>There was an error: {error.message}</h1>
     }
+    */
 
     return (
         <div className="hobby-list-container">
