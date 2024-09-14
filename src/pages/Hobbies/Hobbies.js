@@ -7,13 +7,9 @@ export function loader() {
 }
 export default function Hobbies() {
     const [searchParams, setSearchParams] = useSearchParams()
-    //const [error, setError] = React.useState(null)
-
-
     const hobbies = useLoaderData()
 
     const typeFilter = searchParams.get("type")
-
 
     const displayedHobbies = typeFilter
         ? hobbies.filter(hobby => hobby.type === typeFilter)
@@ -45,12 +41,6 @@ export default function Hobbies() {
             return prevParams
         })
     }
-
-    /*
-    if (error) {
-        return <h1>There was an error: {error.message}</h1>
-    }
-    */
 
     return (
         <div className="hobby-list-container">

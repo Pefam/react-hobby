@@ -10,7 +10,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import Hobbies, { loader as hobbiesLoader } from "./pages/Hobbies/Hobbies"
-import HobbyDetail from "./pages/Hobbies/HobbyDetail"
+import HobbyDetail, { loader as hobbyDetailLoader } from "./pages/Hobbies/HobbyDetail"
 import Login from "./pages/Login"
 import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
@@ -22,7 +22,7 @@ import TeacherHobbyPricing from "./pages/Teacher/TeacherHobbyPricing"
 import TeacherHobbyPhotos from "./pages/Teacher/TeacherHobbyPhotos"
 import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
-import AuthRequired from "./components/AuthRequired"
+//import AuthRequired from "./components/AuthRequired"
 import Error from "./components/Error"
 //import "./server"
 
@@ -32,33 +32,80 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route
+            path="login"
+            element={<Login />}
+        />
+        <Route
             path="hobbies"
             element={<Hobbies />}
             errorElement={<Error />}
             loader={hobbiesLoader}
         />
-        <Route path="hobbies/:id" element={<HobbyDetail />} />
         <Route
-            path="login"
-            element={<Login />}
+            path="hobbies/:id"
+            element={<HobbyDetail />}
+            loader={hobbyDetailLoader}
         />
 
-
-
-
-        <Route element={<AuthRequired />}>
             <Route path="teacher" element={<TeacherLayout />}>
-                <Route index element={<Dashboard />} />
-                <Route path="income" element={<Income />} />
-                <Route path="reviews" element={<Reviews />} />
-                <Route path="hobbies" element={<TeacherHobbies />} />
-                <Route path="hobbies/:id" element={<TeacherHobbyDetail />}>
-                    <Route index element={<TeacherHobbyInfo />} />
-                    <Route path="pricing" element={<TeacherHobbyPricing />} />
-                    <Route path="photos" element={<TeacherHobbyPhotos />} />
+            <Route
+                index
+                element={<Dashboard />}
+                loader={async () => {
+                    return null
+                }}
+            />
+                <Route 
+                    path="income"
+                    element={<Income />}
+                    loader={async () => {
+                    return null
+                    }}
+            />
+                <Route 
+                    path="reviews" 
+                    element={<Reviews />}
+                    loader={async () => {
+                    return null
+                    }}
+                />
+                <Route 
+                    path="hobbies" 
+                    element={<TeacherHobbies />}
+                    loader={async () => {
+                    return null
+                    }}
+                />
+                <Route 
+                    path="hobbies/:id" 
+                    element={<TeacherHobbyDetail />}
+                    loader={async () => {
+                    return null
+                    }}
+                >
+                    <Route 
+                        index 
+                        element={<TeacherHobbyInfo />}
+                        loader={async () => {
+                        return null
+                        }}
+                    />
+                    <Route 
+                        path="pricing" 
+                        element={<TeacherHobbyPricing />}
+                        loader={async () => {
+                        return null
+                        }}
+                    />
+                    <Route 
+                        path="photos" 
+                        element={<TeacherHobbyPhotos />}
+                        loader={async () => {
+                        return null
+                        }}
+                    />
                 </Route>
             </Route>
-        </Route>
 
 
         <Route path="*" element={<NotFound />} />

@@ -47,8 +47,26 @@ export async function getHobbies() {
 }
 
 
+export async function getHobby(id) {
+    try {
+        const docRef = doc(db, "hobbies", id);
+        const snapshot = await getDoc(docRef);
 
+        return {
+            ...snapshot.data(),
+            id: snapshot.id
+        };
+    } catch (error) {
+        // Create a new Error object and attach additional properties
+        const customError = new Error("Failed to fetch hobby");
+        customError.statusText = error.message;
+        customError.status = error.code || error.name || "Unknown Error";
 
+        throw customError; // Throwing an Error object complies with ESLint
+    }
+}
+
+/*
 export async function getHobby(id) {
     const docRef = doc(db, "hobbies", id)
     const snapshot = await getDoc(docRef)
@@ -57,7 +75,27 @@ export async function getHobby(id) {
         id: snapshot.id
     }
 }
+*/
+export async function getTeacherHobbies() {
+    try {
+        const q = query(hobbiesCollectionRef, where("hostId", "==", "123"));
+        const snapshot = await getDocs(q);
+        const hobbies = snapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return hobbies;
+    } catch (error) {
+        // Create a new Error object and attach additional properties
+        const customError = new Error("Failed to fetch hobbies");
+        customError.statusText = error.message;
+        customError.status = error.code || error.name || "Unknown Error";
 
+        throw customError; // Throwing an Error object complies with ESLint
+    }
+}
+
+/*
 export async function getTeacherHobbies() {
     const q = query(hobbiesCollectionRef, where("hostId", "==", "123"))
     const snapshot = await getDocs(q)
@@ -67,7 +105,7 @@ export async function getTeacherHobbies() {
     }))
     return hobbies
 }
-
+*/
 /*
 export async function getTeacherHobbies(id) {
     const url = id ? `/api/teacher/hobbies/${id}` : "/api/teacher/hobbies"
