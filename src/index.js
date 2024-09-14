@@ -15,8 +15,8 @@ import Login from "./pages/Login"
 import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
-import TeacherHobbies from "./pages/Teacher/TeacherHobbies"
-import TeacherHobbyDetail from "./pages/Teacher/TeacherHobbyDetail"
+import TeacherHobbies, { loader as teacherHobbiesLoader } from "./pages/Teacher/TeacherHobbies"
+import TeacherHobbyDetail, { loader as teacherHobbyDetailLoader } from "./pages/Teacher/TeacherHobbyDetail"
 import TeacherHobbyInfo from "./pages/Teacher/TeacherHobbyInfo"
 import TeacherHobbyPricing from "./pages/Teacher/TeacherHobbyPricing"
 import TeacherHobbyPhotos from "./pages/Teacher/TeacherHobbyPhotos"
@@ -72,16 +72,12 @@ const router = createBrowserRouter(createRoutesFromElements(
                 <Route 
                     path="hobbies" 
                     element={<TeacherHobbies />}
-                    loader={async () => {
-                    return null
-                    }}
+                    loader={teacherHobbiesLoader}
                 />
                 <Route 
                     path="hobbies/:id" 
                     element={<TeacherHobbyDetail />}
-                    loader={async () => {
-                    return null
-                    }}
+                    loader={teacherHobbyDetailLoader}
                 >
                     <Route 
                         index 

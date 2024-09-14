@@ -1,35 +1,12 @@
 import React from "react"
-import { useParams, Link, NavLink, Outlet } from "react-router-dom"
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
 import { getHobby } from "../../api"
+
+export function loader({ params }) {
+    return getHobby(params.id)
+}
 export default function TeacherHobbyDetail() {
-    const [currentHobby, setCurrentHobby] = React.useState([])
-    const [loading, setLoading] = React.useState(false)
-    const [error, setError] = React.useState(null)
-    const { id } = useParams()
-
-    React.useEffect(() => {
-        async function loadHobbies() {
-            setLoading(true)
-            try {
-                const data = await getHobby(id)
-                setCurrentHobby(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        loadHobbies()
-    }, [id])
-
-    if (loading) {
-        return <h1>Loading...</h1>
-    }
-
-    if (error) {
-        return <h1>There was an error: {error.message}</h1>
-    }
+    const currentHobby = useLoaderData()
 
     const activeStyles = {
         fontWeight: "bold",
