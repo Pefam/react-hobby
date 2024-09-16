@@ -45,8 +45,8 @@ createServer({
         })
 
         this.post("/login", (schema, request) => {
+            console.log("logging in")
             const { email, password } = JSON.parse(request.requestBody)
-            //For testing
             const foundUser = schema.users.findBy({ email, password })
             if (!foundUser) {
                 return new Response(401, {}, { message: "No user with those credentials found!" })

@@ -11,7 +11,7 @@ import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import Hobbies, { loader as hobbiesLoader } from "./pages/Hobbies/Hobbies"
 import HobbyDetail, { loader as hobbyDetailLoader } from "./pages/Hobbies/HobbyDetail"
-import Login from "./pages/Login"
+import Login, { loader as loginLoader } from "./pages/Login"
 import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
@@ -34,6 +34,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route
             path="login"
             element={<Login />}
+            loader={loginLoader}
         />
         <Route
             path="hobbies"
