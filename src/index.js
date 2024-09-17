@@ -11,7 +11,7 @@ import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import Hobbies, { loader as hobbiesLoader } from "./pages/Hobbies/Hobbies"
 import HobbyDetail, { loader as hobbyDetailLoader } from "./pages/Hobbies/HobbyDetail"
-import Login, { loader as loginLoader } from "./pages/Login"
+import Login, { loader as loginLoader, action as loginAction } from "./pages/Login"
 import Dashboard from "./pages/Teacher/Dashboard"
 import Income from "./pages/Teacher/Income"
 import Reviews from "./pages/Teacher/Reviews"
@@ -24,6 +24,8 @@ import Layout from "./components/Layout"
 import TeacherLayout from "./components/TeacherLayout"
 //import AuthRequired from "./components/AuthRequired"
 import Error from "./components/Error"
+import { requireAuth } from "./utils"
+localStorage.removeItem("loggedin")
 //import "./server"
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -35,6 +37,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             path="login"
             element={<Login />}
             loader={loginLoader}
+            action={loginAction}
         />
         <Route
             path="hobbies"
@@ -53,21 +56,24 @@ const router = createBrowserRouter(createRoutesFromElements(
                 index
                 element={<Dashboard />}
                 loader={async () => {
-                    return null
+                    await requireAuth()
+                    return null;
                 }}
             />
                 <Route 
                     path="income"
                     element={<Income />}
                     loader={async () => {
-                    return null
+                        await requireAuth()
+                        return null;
                     }}
             />
                 <Route 
                     path="reviews" 
                     element={<Reviews />}
                     loader={async () => {
-                    return null
+                        await requireAuth()
+                        return null;
                     }}
                 />
                 <Route 
@@ -84,21 +90,24 @@ const router = createBrowserRouter(createRoutesFromElements(
                         index 
                         element={<TeacherHobbyInfo />}
                         loader={async () => {
-                        return null
+                            await requireAuth()
+                            return null;
                         }}
                     />
                     <Route 
                         path="pricing" 
                         element={<TeacherHobbyPricing />}
                         loader={async () => {
-                        return null
+                            await requireAuth()
+                            return null;
                         }}
                     />
                     <Route 
                         path="photos" 
                         element={<TeacherHobbyPhotos />}
                         loader={async () => {
-                        return null
+                            await requireAuth()
+                            return null;
                         }}
                     />
                 </Route>
