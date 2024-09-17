@@ -1,8 +1,10 @@
 import React from "react"
-import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
+import { useParams, Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
 import { getHobby } from "../../api"
+import { requireAuth } from "../../utils"
 
-export function loader({ params }) {
+export async function loader({ params, request }) {
+    await requireAuth({ request })
     return getHobby(params.id)
 }
 export default function TeacherHobbyDetail() {

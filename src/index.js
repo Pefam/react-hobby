@@ -25,6 +25,8 @@ import TeacherLayout from "./components/TeacherLayout"
 //import AuthRequired from "./components/AuthRequired"
 import Error from "./components/Error"
 import { requireAuth } from "./utils"
+
+//fake log out each time you go to homepage
 localStorage.removeItem("loggedin")
 //import "./server"
 
@@ -55,24 +57,24 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route
                 index
                 element={<Dashboard />}
-                loader={async () => {
-                    await requireAuth()
+                loader={async ( request ) => {
+                    await requireAuth( request )
                     return null;
                 }}
             />
                 <Route 
                     path="income"
                     element={<Income />}
-                    loader={async () => {
-                        await requireAuth()
+                    loader={async ( request ) => {
+                        await requireAuth(request)
                         return null;
                     }}
             />
                 <Route 
                     path="reviews" 
                     element={<Reviews />}
-                    loader={async () => {
-                        await requireAuth()
+                    loader={async ( request ) => {
+                        await requireAuth(request)
                         return null;
                     }}
                 />
@@ -89,24 +91,24 @@ const router = createBrowserRouter(createRoutesFromElements(
                     <Route 
                         index 
                         element={<TeacherHobbyInfo />}
-                        loader={async () => {
-                            await requireAuth()
+                        loader={async ( request ) => {
+                            await requireAuth(request)
                             return null;
                         }}
                     />
                     <Route 
                         path="pricing" 
                         element={<TeacherHobbyPricing />}
-                        loader={async () => {
-                            await requireAuth()
+                        loader={async ( request ) => {
+                            await requireAuth(request)
                             return null;
                         }}
                     />
                     <Route 
                         path="photos" 
                         element={<TeacherHobbyPhotos />}
-                        loader={async () => {
-                            await requireAuth()
+                        loader={async ( request ) => {
+                            await requireAuth(request)
                             return null;
                         }}
                     />

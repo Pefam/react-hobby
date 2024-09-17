@@ -1,32 +1,16 @@
 import React from "react"
 import { Link, useLoaderData } from "react-router-dom"
 import { getTeacherHobbies } from "../../api"
+import { requireAuth } from "../../utils"
 
-export function loader() {
+export async function loader({ request }) {
+    console.log("is it this one?")
+    await requireAuth({ request })
     return getTeacherHobbies()
 }
 
 export default function TeacherHobbies() {
-    //const [hobbies, setHobbies] = React.useState([])
-    //const [loading, setLoading] = React.useState(false)
     const hobbies = useLoaderData()
-    //const [error, setError] = React.useState(null)
-    /*
-    React.useEffect(() => {
-        async function loadHobbies() {
-            setLoading(true)
-            try {
-                const data = await getTeacherHobbies()
-                setHobbies(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadHobbies()
-    }, [])
-    */
 
     const teacherHobbiesEls = hobbies.map(hobby => (
         <Link
