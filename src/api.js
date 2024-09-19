@@ -97,10 +97,9 @@ export async function loginUser(creds) {
             token: "Enjoy your pizza, here's your tokens."
         }
     } catch (error) {
-        throw {
-            message: "No user with those credentials found!",
-            statusText: "Unauthorized",
-            status: 401
-        };
+        const customError = new Error("No user with those credentials found!");
+        customError.statusText = "Unauthorized";
+        customError.status = 401;
+        throw customError;
     }
 }
