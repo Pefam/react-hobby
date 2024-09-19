@@ -64,6 +64,7 @@ export async function getHobby(id) {
     }
 }
 export async function getTeacherHobbies() {
+
     try {
         const q = query(hobbiesCollectionRef, where("hostId", "==", "123"));
         const snapshot = await getDocs(q);
