@@ -1,14 +1,14 @@
 import React from "react"
-import { useParams, Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
+import { Link, NavLink, Outlet, useLoaderData, Await, defer } from "react-router-dom"
 import { getHobby } from "../../api"
 import { requireAuth } from "../../utils"
 
 export async function loader({ params, request }) {
     await requireAuth({ request })
-    return getHobby(params.id)
+    return defer({ currentHobby: getHobby(params.id) })
 }
 export default function TeacherHobbyDetail() {
-    const currentHobby = useLoaderData()
+    const dataPromise = useLoaderData()
 
     const activeStyles = {
         fontWeight: "bold",
@@ -16,14 +16,8 @@ export default function TeacherHobbyDetail() {
         color: "#161616"
     }
 
-    return (
-        <section>
-            <Link
-                to=".."
-                relative="path"
-                className="back-button"
-            >&larr; <span>Back to all hobbies</span></Link>
-
+    function renderHobbyElement(currentHobby) {
+       return (
             <div className="teacher-hobby-detail-layout-container">
                 <div className="teacher-hobby-detail">
                     <img src={currentHobby.imageUrl} alt={currentHobby.name} />
@@ -65,6 +59,22 @@ export default function TeacherHobbyDetail() {
 
                 <Outlet context={{ currentHobby }} />
             </div>
+        )
+
+    }
+
+    return (
+        <section>
+            <Link
+                to=".."
+                relative="path"
+                className="back-button"
+            >&larr; <span>Back to all hobbies</span></Link>
+            <React.Suspense fallback={<h2>Loading hobby...</h2>}>
+                <Await resolve={dataPromise.currentHobby}>
+                    {renderHobbyElement}
+                </Await>
+            </React.Suspense>
         </section>
     )
 }
